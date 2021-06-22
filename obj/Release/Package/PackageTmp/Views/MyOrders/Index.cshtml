@@ -1,0 +1,30 @@
+﻿@model IEnumerable<The_New_Paradise.Models.ServicesTable>
+
+@{
+    ViewBag.Title = "Index";
+}
+<table class="table">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Price
+        </th>
+        <th>
+            Image
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.Service_Namee)</td>
+            <td>@Html.DisplayFor(modelItem => item.Service_Price)</td>
+            <td>
+                <img src="@Url.Content("~/Upload/"+item.Service_Image)" style="height:100px; width:200px;" />
+            </td>
+            
+        </tr>
+    }
+</table>

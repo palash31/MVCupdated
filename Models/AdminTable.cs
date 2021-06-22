@@ -22,6 +22,7 @@ namespace The_New_Paradise.Models
         [Display(Name = "User Name")]
         public string Admin_Email { get; set; }
         [DataType(DataType.Password)]
+        [Display(Name = "Password")]
         public string Admin_Password { get; set; }
     }
 }

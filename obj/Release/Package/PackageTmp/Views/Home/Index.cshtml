@@ -1,20 +1,30 @@
-﻿@model The_New_Paradise.Models.Customer
+﻿@using The_New_Paradise.Models
+@model The_New_Paradise.Models.Customer
 @{
     ViewBag.Title = "Home Page";
+}
+@{
+    Customer custo = ViewData["Cust"] as Customer;
+    AdminTable admi = ViewData["Adm"] as AdminTable;
 }
 <body style="background-image: url('https://media.istockphoto.com/photos/hairdresser-tools-on-black-background-with-copy-space-in-center-picture-id1020439322?k=6&m=1020439322&s=612x612&w=0&h=2lWgxQvymf3LbgcN27lGm_FrSFlmlcLQF6-WvGxNbPA='); background-repeat: no-repeat; background-size: cover; background-position: center; ">
 </body>
 
-@if (Model == null)
+@if (custo == null && admi == null)
 {
     <h2 style="text-align: center; color: navajowhite; margin-top: 50px">Welcome to</h2>
     <h1 style="text-align:center; color:navajowhite; font-family:'Arial Rounded MT'; margin-top: 20px;">THE NEW PARADISE</h1>
 }
 
-@if (Model != null)
+@if (custo != null)
 {
     <h3 style="text-align: center; color:lawngreen; margin-top: 50px">Welcome</h3>
-    <h1 style="text-align:center; color:salmon; font-family:'Arial Rounded MT'; margin-top: 20px;">@Html.DisplayFor(model => model.Customer_Name)</h1>
+    <h1 style="text-align:center; color:salmon; font-family:'Arial Rounded MT'; margin-top: 20px;">@custo.Customer_Name</h1>
+}
+@if (admi != null)
+{
+    <h3 style="text-align: center; color:lawngreen; margin-top: 50px">Welcome</h3>
+    <h1 style="text-align:center; color:salmon; font-family:'Arial Rounded MT'; margin-top: 20px;">@admi.Admin_Name</h1>
 }
 
 <h4 style="text-align:center; color:cadetblue;margin-top:50px;">Click here to <a href="@Url.Action("CustSignIn","Customers")" class="btn btn-primary">Sign In</a> <a href="@Url.Action("CustSignOut","Customers")" class="btn btn-primary">Sign Out</a></h4>

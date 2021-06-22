@@ -50,5 +50,34 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Customer_Cart">
+      <EntityTypeMapping TypeName="ProjectHeavenModel.Customer_Cart">
+        <MappingFragment StoreEntitySet="Customer_Cart">
+          <ScalarProperty Name="Total_Quantity" ColumnName="Total_Quantity" />
+          <ScalarProperty Name="Total_Price" ColumnName="Total_Price" />
+          <ScalarProperty Name="Customer_Id" ColumnName="Customer_Id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cart_Item">
+      <EntityTypeMapping TypeName="ProjectHeavenModel.Cart_Item">
+        <MappingFragment StoreEntitySet="Cart_Item">
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Servive_Id" ColumnName="Servive_Id" />
+          <ScalarProperty Name="Cart_Id" ColumnName="Cart_Id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MyOrders">
+      <EntityTypeMapping TypeName="ProjectHeavenModel.MyOrder">
+        <MappingFragment StoreEntitySet="MyOrder">
+          <ScalarProperty Name="Service_Id" ColumnName="Service_Id" />
+          <ScalarProperty Name="Order_Id" ColumnName="Order_Id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>
