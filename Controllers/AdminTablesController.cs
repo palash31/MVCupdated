@@ -53,9 +53,9 @@ namespace The_New_Paradise.Controllers
                 {
                     Models.AdminTable admin = context.AdminTables.Where(u => u.Admin_Email == obj.Admin_Email && u.Admin_Password == obj.Admin_Password).FirstOrDefault();
                     if (admin != null)
-                    {
-
-                        Session["AdminEmail"] = admin.Admin_Email;
+                    { 
+                        Session["AdminEmail"] = admin;
+                        Session["CustomerEmail"] = null;
                         return RedirectToAction("Index", "Home");
                     }
                     else

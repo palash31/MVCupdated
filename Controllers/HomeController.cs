@@ -11,8 +11,9 @@ namespace The_New_Paradise.Controllers
     {
         public ActionResult Index()
         {
-            Customer C = new Customer();
-            C = (Customer)Session["CustomerEmail"];
+            Customer C = (Customer)Session["CustomerEmail"];
+            
+            ViewData.Model = C;
             return View();
         }
 

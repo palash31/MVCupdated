@@ -11,17 +11,6 @@
     <Property Name="Admin_Email" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Admin_Password" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
-  <EntityType Name="Cart_Item">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Cart_Id" Type="int" />
-    <Property Name="Service_Id" Type="int" />
-    <Property Name="PriceOfGivenService" Type="int" Nullable="false" />
-    <Property Name="QuanOfGivenServiceForGivenCust" Type="int" Nullable="false" />
-    <Property Name="TotalPriceOfGivenServiceForGivenCust" Type="int" Nullable="false" />
-  </EntityType>
   <EntityType Name="Customer">
     <Key>
       <PropertyRef Name="Customer_ID" />
@@ -33,15 +22,6 @@
     <Property Name="Customer_Address" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="Customer_Email" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Customer_Password" Type="nvarchar" MaxLength="30" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Customer_Cart">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Customer_Id" Type="int" />
-    <Property Name="Total_Price" Type="float" Nullable="false" />
-    <Property Name="Total_Quantity" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Employee">
     <Key>
@@ -65,60 +45,10 @@
     <Property Name="Service_Description" Type="nvarchar" MaxLength="200" Nullable="false" />
     <Property Name="Service_Image" Type="varchar" MaxLength="150" />
   </EntityType>
-  <Association Name="FK__Cart_Item__Cart___2180FB33">
-    <End Role="Customer_Cart" Type="Self.Customer_Cart" Multiplicity="0..1" />
-    <End Role="Cart_Item" Type="Self.Cart_Item" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Customer_Cart">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Cart_Item">
-        <PropertyRef Name="Cart_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Cart_Item__Servi__22751F6C">
-    <End Role="ServicesTable" Type="Self.ServicesTable" Multiplicity="0..1" />
-    <End Role="Cart_Item" Type="Self.Cart_Item" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ServicesTable">
-        <PropertyRef Name="Service_ID" />
-      </Principal>
-      <Dependent Role="Cart_Item">
-        <PropertyRef Name="Service_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Customer___Custo__1CBC4616">
-    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
-    <End Role="Customer_Cart" Type="Self.Customer_Cart" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Customer">
-        <PropertyRef Name="Customer_ID" />
-      </Principal>
-      <Dependent Role="Customer_Cart">
-        <PropertyRef Name="Customer_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityContainer Name="ProjectHeavenModelStoreContainer">
     <EntitySet Name="AdminTable" EntityType="Self.AdminTable" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Cart_Item" EntityType="Self.Cart_Item" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Customer_Cart" EntityType="Self.Customer_Cart" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ServicesTable" EntityType="Self.ServicesTable" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__Cart_Item__Cart___2180FB33" Association="Self.FK__Cart_Item__Cart___2180FB33">
-      <End Role="Customer_Cart" EntitySet="Customer_Cart" />
-      <End Role="Cart_Item" EntitySet="Cart_Item" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Cart_Item__Servi__22751F6C" Association="Self.FK__Cart_Item__Servi__22751F6C">
-      <End Role="ServicesTable" EntitySet="ServicesTable" />
-      <End Role="Cart_Item" EntitySet="Cart_Item" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Customer___Custo__1CBC4616" Association="Self.FK__Customer___Custo__1CBC4616">
-      <End Role="Customer" EntitySet="Customer" />
-      <End Role="Customer_Cart" EntitySet="Customer_Cart" />
-    </AssociationSet>
   </EntityContainer>
 </Schema>

@@ -143,7 +143,7 @@ namespace The_New_Paradise.Controllers
                     {
                         
                         Session["CustomerEmail"] = cust;
-                        
+                        Session["AdminEmail"] = null;
                         return RedirectToAction("Index", "Home");
                     }
                     else

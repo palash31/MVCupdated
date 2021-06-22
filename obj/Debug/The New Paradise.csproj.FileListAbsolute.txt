@@ -490,7 +490,6 @@ D:\MVC Project\bin\System.Web.WebPages.Razor.xml
 D:\MVC Project\bin\Newtonsoft.Json.xml
 D:\MVC Project\bin\Antlr3.Runtime.pdb
 D:\MVC Project\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\MVC Project\obj\Debug\The New Paradise.csprojAssemblyReference.cache
 D:\MVC Project\obj\Debug\The New Paradise.csproj.CoreCompileInputs.cache
 D:\MVC Project\obj\Debug\The New Paradise.csproj.CopyComplete
 D:\MVC Project\obj\Debug\The New Paradise.dll

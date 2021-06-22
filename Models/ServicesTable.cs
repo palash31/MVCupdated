@@ -14,20 +14,11 @@ namespace The_New_Paradise.Models
     
     public partial class ServicesTable
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ServicesTable()
-        {
-            this.Cart_Item = new HashSet<Cart_Item>();
-        }
-    
         public int Service_ID { get; set; }
         public string Service_Namee { get; set; }
         public double Service_Price { get; set; }
         public int Service_Time { get; set; }
         public string Service_Description { get; set; }
         public string Service_Image { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Cart_Item> Cart_Item { get; set; }
     }
 }

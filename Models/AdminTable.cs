@@ -19,12 +19,12 @@ namespace The_New_Paradise.Models
         public string Admin_Name { get; set; }
         public string Admin_Phone { get; set; }
         public string Admin_Address { get; set; }
-        [Display(Name = "User Name")]
         [Required]
+        [Display(Name = "User Name")]
         public string Admin_Email { get; set; }
-        [Display(Name = "Password")]
         [Required]
         [DataType(DataType.Password)]
+        [Display(Name = "Password")]
         public string Admin_Password { get; set; }
     }
 }
