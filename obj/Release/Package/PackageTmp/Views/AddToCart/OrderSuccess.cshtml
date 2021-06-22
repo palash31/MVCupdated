@@ -1,0 +1,30 @@
+﻿@model The_New_Paradise.Models.Customer
+
+@{
+    ViewBag.Title = "OrderSuccess";
+}
+
+<h2 style="text-align:center;color:darkgreen;">Thanks, Your Order is successfully placed</h2>
+<h4 style="text-align:center;color:darkgreen;">Payment Mode: Cash On Delivery</h4>
+<br />
+<br />
+
+<table class="table table-success table-striped">
+    <tr>
+        <th>Name</th>
+        <td>@Html.DisplayFor(model => model.Customer_Name)</td>
+    </tr>
+    <tr>
+        <th>Email</th>
+        <td>@Html.DisplayFor(model => model.Customer_Email)</td>
+    </tr>
+    <tr>
+        <th>Mobile Number</th>
+        <td>@Html.DisplayFor(model => model.Customer_Phone)</td>
+    </tr>
+    <tr>
+        <th>Delivery Address</th>
+        <td>@Html.DisplayFor(model => model.Customer_Address)</td>
+    </tr>
+</table>
+<a href="@Url.Action("Index","ServicesTables")" class="btn btn-success">Continue Shopping</a>

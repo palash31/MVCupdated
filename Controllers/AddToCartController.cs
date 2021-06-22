@@ -59,7 +59,9 @@ namespace The_New_Paradise.Controllers
         public ActionResult OrderSuccess()
         {
             Customer cu = (Customer)Session["CustomerEmail"];
-            ViewData.Model = cu;
+            List<ServicesTable> ser = (List<ServicesTable>)Session["cart"];
+            ViewData["Customers"] = cu;
+            ViewData["Services"] = ser;
             return View();
         }
 

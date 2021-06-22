@@ -7,6 +7,7 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
+
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top" style="background-color:bisque;">
         <div class="container">
@@ -24,13 +25,14 @@
                     <li>@Html.ActionLink("Services", "Index", "ServicesTables")</li>
                     <li>@Html.ActionLink("Employees", "Index", "Employees")</li>
                     <li>@Html.ActionLink("Customers", "Index", "Customers")</li>
+                    <li style="float:right">@Html.ActionLink("My Cart", "MyCart", "AddToCart")</li>
                 </ul>
             </div>
         </div>
     </div>
     <div class="container body-content">
         @RenderBody()
-        
+
     </div>
 
     @Scripts.Render("~/bundles/jquery")

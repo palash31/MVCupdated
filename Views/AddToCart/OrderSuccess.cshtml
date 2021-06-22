@@ -1,7 +1,14 @@
 ﻿@model The_New_Paradise.Models.Customer
-
+@using The_New_Paradise.Models
 @{
     ViewBag.Title = "OrderSuccess";
+}
+@{
+    Customer customers = ViewData["Customers"] as Customer;
+    IEnumerable<ServicesTable> services = ViewData["Services"] as IEnumerable<ServicesTable>;
+}
+@{
+    int sum = 0;
 }
 
 <h2 style="text-align:center;color:darkgreen;">Thanks, Your Order is successfully placed</h2>
@@ -10,21 +17,47 @@
 <br />
 
 <table class="table table-success table-striped">
+        <tr>
+            <th>Name</th>
+            <td>@customers.Customer_Name</td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td>@(customers.Customer_Email)</td>
+        </tr>
+        <tr>
+            <th>Mobile Number</th>
+            <td>@(customers.Customer_Phone)</td>
+        </tr>
+        <tr>
+            <th>Delivery Address</th>
+            <td>@(customers.Customer_Address)</td>
+        </tr>
+    </table>
+@foreach (var item in services)
+{
+    sum = Convert.ToInt32(item.Service_Price) + sum;
+}
+<table class="table table-success">
     <tr>
-        <th>Name</th>
-        <td>@Html.DisplayFor(model => model.Customer_Name)</td>
+        <th>Service</th>
+        <th>Price</th>
+        <th>Image</t
     </tr>
+    @foreach (ServicesTable s in services)
+    {
+        <tr>
+            <td>@s.Service_Namee</td>
+            <td><img src="@Url.Content("~/Upload/" + s.Service_Image)" style="height: 90px; width: 80px;" /></td>
+            <td>@s.Service_Price</td>
+        </tr>
+    }
     <tr>
-        <th>Email</th>
-        <td>@Html.DisplayFor(model => model.Customer_Email)</td>
-    </tr>
-    <tr>
-        <th>Mobile Number</th>
-        <td>@Html.DisplayFor(model => model.Customer_Phone)</td>
-    </tr>
-    <tr>
-        <th>Delivery Address</th>
-        <td>@Html.DisplayFor(model => model.Customer_Address)</td>
+        <td>
+            <b>Total</b>
+        </td>
+        <td></td>
+        <td>@sum</td>
     </tr>
 </table>
 <a href="@Url.Action("Index","ServicesTables")" class="btn btn-success">Continue Shopping</a>

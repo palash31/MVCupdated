@@ -9,7 +9,7 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
+<table class="table table-bordered table-striped">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Customer_Name)
@@ -46,11 +46,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.Customer_Email)
         </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Customer_ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Customer_ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Customer_ID })
-        </td>
+        
     </tr>
 }
 

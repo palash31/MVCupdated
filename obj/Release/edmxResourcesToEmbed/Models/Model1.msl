@@ -50,49 +50,5 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Carts">
-      <EntityTypeMapping TypeName="ProjectHeavenModel.Cart">
-        <MappingFragment StoreEntitySet="Cart">
-          <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="Customer_Id" ColumnName="Customer_Id" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Cart_Item">
-      <EntityTypeMapping TypeName="ProjectHeavenModel.Cart_Item">
-        <MappingFragment StoreEntitySet="Cart_Item">
-          <ScalarProperty Name="Active" ColumnName="Active" />
-          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-          <ScalarProperty Name="Price" ColumnName="Price" />
-          <ScalarProperty Name="Cart_Id" ColumnName="Cart_Id" />
-          <ScalarProperty Name="Service_Id" ColumnName="Service_Id" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Orders">
-      <EntityTypeMapping TypeName="ProjectHeavenModel.Order">
-        <MappingFragment StoreEntitySet="Order">
-          <ScalarProperty Name="Total" ColumnName="Total" />
-          <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="Customer_Id" ColumnName="Customer_Id" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Order_Item">
-      <EntityTypeMapping TypeName="ProjectHeavenModel.Order_Item">
-        <MappingFragment StoreEntitySet="Order_Item">
-          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-          <ScalarProperty Name="Price" ColumnName="Price" />
-          <ScalarProperty Name="Order_Id" ColumnName="Order_Id" />
-          <ScalarProperty Name="Customer_Id" ColumnName="Customer_Id" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

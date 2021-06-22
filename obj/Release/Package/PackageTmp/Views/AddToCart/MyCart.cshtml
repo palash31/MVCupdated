@@ -1,0 +1,60 @@
+﻿@model IEnumerable<The_New_Paradise.Models.ServicesTable>
+
+@{
+    ViewBag.Title = "MyCart";
+}
+@{ 
+    int sum = 0;
+}
+<table class="table">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Price
+        </th>
+        <th>
+            Image
+        </th>
+        <th>
+            Remove
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Service_Namee)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Service_Price)
+    </td>
+    <td>
+        <img src="@Url.Content("~/Upload/"+item.Service_Image)" style="height:100px; width:200px;" />
+    </td>
+    <td>
+        <button class="label label-primary" onclick="location.href='@Url.Action("Remove","AddToCart",item)'">
+            <img src="@Url.Content("~/Upload/DeleteIcon.jpg")" style="height: 90px; width: 80px;"/>
+        </button>
+    </td>
+</tr>
+}
+@foreach (var item in Model)
+{
+    sum = Convert.ToInt32(item.Service_Price) + sum;
+}
+<tfoot>
+    <tr>
+        <td></td>
+        <td></td>
+        <td>
+            <b>Total</b>
+        </td>
+        <td>@sum</td>
+    </tr>
+</tfoot>
+</table>
+<a href="@Url.Action("OrderSuccess","AddToCart")" class="btn btn-success">Place Order</a>
+<a href="@Url.Action("Index","ServicesTables")" class="btn btn-danger">Continue Shopping</a>

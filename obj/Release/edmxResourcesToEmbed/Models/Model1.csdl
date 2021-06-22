@@ -22,9 +22,6 @@
     <Property Name="Customer_Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Customer_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Customer_Password" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="Carts" Relationship="ProjectHeavenModel.FK__Cart__Customer_I__7E37BEF6" FromRole="Customer" ToRole="Cart" />
-    <NavigationProperty Name="Orders" Relationship="ProjectHeavenModel.FK__Order__Customer___05D8E0BE" FromRole="Customer" ToRole="Order" />
-    <NavigationProperty Name="Order_Item" Relationship="ProjectHeavenModel.FK__Order_Ite__Custo__08B54D69" FromRole="Customer" ToRole="Order_Item" />
   </EntityType>
   <EntityType Name="Employee">
     <Key>
@@ -47,160 +44,11 @@
     <Property Name="Service_Time" Type="Int32" Nullable="false" />
     <Property Name="Service_Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Service_Image" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="Cart_Item" Relationship="ProjectHeavenModel.FK__Cart_Item__Servi__02084FDA" FromRole="ServicesTable" ToRole="Cart_Item" />
   </EntityType>
   <EntityContainer Name="ProjectHeavenEntities2" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="AdminTables" EntityType="Self.AdminTable" />
     <EntitySet Name="Customers" EntityType="Self.Customer" />
     <EntitySet Name="Employees" EntityType="Self.Employee" />
     <EntitySet Name="ServicesTables" EntityType="Self.ServicesTable" />
-    <EntitySet Name="Carts" EntityType="ProjectHeavenModel.Cart" />
-    <EntitySet Name="Cart_Item" EntityType="ProjectHeavenModel.Cart_Item" />
-    <EntitySet Name="Orders" EntityType="ProjectHeavenModel.Order" />
-    <EntitySet Name="Order_Item" EntityType="ProjectHeavenModel.Order_Item" />
-    <AssociationSet Name="FK__Cart__Customer_I__7E37BEF6" Association="ProjectHeavenModel.FK__Cart__Customer_I__7E37BEF6">
-      <End Role="Customer" EntitySet="Customers" />
-      <End Role="Cart" EntitySet="Carts" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Cart_Item__Cart___02FC7413" Association="ProjectHeavenModel.FK__Cart_Item__Cart___02FC7413">
-      <End Role="Cart" EntitySet="Carts" />
-      <End Role="Cart_Item" EntitySet="Cart_Item" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Cart_Item__Servi__02084FDA" Association="ProjectHeavenModel.FK__Cart_Item__Servi__02084FDA">
-      <End Role="ServicesTable" EntitySet="ServicesTables" />
-      <End Role="Cart_Item" EntitySet="Cart_Item" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Order__Customer___05D8E0BE" Association="ProjectHeavenModel.FK__Order__Customer___05D8E0BE">
-      <End Role="Customer" EntitySet="Customers" />
-      <End Role="Order" EntitySet="Orders" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Order_Ite__Custo__08B54D69" Association="ProjectHeavenModel.FK__Order_Ite__Custo__08B54D69">
-      <End Role="Customer" EntitySet="Customers" />
-      <End Role="Order_Item" EntitySet="Order_Item" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Order_Ite__Order__09A971A2" Association="ProjectHeavenModel.FK__Order_Ite__Order__09A971A2">
-      <End Role="Order" EntitySet="Orders" />
-      <End Role="Order_Item" EntitySet="Order_Item" />
-    </AssociationSet>
   </EntityContainer>
-  <EntityType Name="Cart">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Customer_Id" Type="Int32" Nullable="false" />
-    <Property Name="Status" Type="Int32" Nullable="false" />
-    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Customer" Relationship="ProjectHeavenModel.FK__Cart__Customer_I__7E37BEF6" FromRole="Cart" ToRole="Customer" />
-    <NavigationProperty Name="Cart_Item" Relationship="ProjectHeavenModel.FK__Cart_Item__Cart___02FC7413" FromRole="Cart" ToRole="Cart_Item" />
-  </EntityType>
-  <EntityType Name="Cart_Item">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Service_Id" Type="Int32" Nullable="false" />
-    <Property Name="Cart_Id" Type="Int32" Nullable="false" />
-    <Property Name="Price" Type="Double" Nullable="false" />
-    <Property Name="Quantity" Type="Int32" Nullable="false" />
-    <Property Name="Active" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Cart" Relationship="ProjectHeavenModel.FK__Cart_Item__Cart___02FC7413" FromRole="Cart_Item" ToRole="Cart" />
-    <NavigationProperty Name="ServicesTable" Relationship="ProjectHeavenModel.FK__Cart_Item__Servi__02084FDA" FromRole="Cart_Item" ToRole="ServicesTable" />
-  </EntityType>
-  <EntityType Name="Order">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Customer_Id" Type="Int32" Nullable="false" />
-    <Property Name="Status" Type="Int32" Nullable="false" />
-    <Property Name="Total" Type="Double" Nullable="false" />
-    <NavigationProperty Name="Customer" Relationship="ProjectHeavenModel.FK__Order__Customer___05D8E0BE" FromRole="Order" ToRole="Customer" />
-    <NavigationProperty Name="Order_Item" Relationship="ProjectHeavenModel.FK__Order_Ite__Order__09A971A2" FromRole="Order" ToRole="Order_Item" />
-  </EntityType>
-  <EntityType Name="Order_Item">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Customer_Id" Type="Int32" Nullable="false" />
-    <Property Name="Order_Id" Type="Int32" Nullable="false" />
-    <Property Name="Price" Type="Double" Nullable="false" />
-    <Property Name="Quantity" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Customer" Relationship="ProjectHeavenModel.FK__Order_Ite__Custo__08B54D69" FromRole="Order_Item" ToRole="Customer" />
-    <NavigationProperty Name="Order" Relationship="ProjectHeavenModel.FK__Order_Ite__Order__09A971A2" FromRole="Order_Item" ToRole="Order" />
-  </EntityType>
-  <Association Name="FK__Cart__Customer_I__7E37BEF6">
-    <End Type="ProjectHeavenModel.Customer" Role="Customer" Multiplicity="1" />
-    <End Type="ProjectHeavenModel.Cart" Role="Cart" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Customer">
-        <PropertyRef Name="Customer_ID" />
-      </Principal>
-      <Dependent Role="Cart">
-        <PropertyRef Name="Customer_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Cart_Item__Cart___02FC7413">
-    <End Type="ProjectHeavenModel.Cart" Role="Cart" Multiplicity="1" />
-    <End Type="ProjectHeavenModel.Cart_Item" Role="Cart_Item" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Cart">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Cart_Item">
-        <PropertyRef Name="Cart_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Cart_Item__Servi__02084FDA">
-    <End Type="ProjectHeavenModel.ServicesTable" Role="ServicesTable" Multiplicity="1" />
-    <End Type="ProjectHeavenModel.Cart_Item" Role="Cart_Item" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ServicesTable">
-        <PropertyRef Name="Service_ID" />
-      </Principal>
-      <Dependent Role="Cart_Item">
-        <PropertyRef Name="Service_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Order__Customer___05D8E0BE">
-    <End Type="ProjectHeavenModel.Customer" Role="Customer" Multiplicity="1" />
-    <End Type="ProjectHeavenModel.Order" Role="Order" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Customer">
-        <PropertyRef Name="Customer_ID" />
-      </Principal>
-      <Dependent Role="Order">
-        <PropertyRef Name="Customer_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Order_Ite__Custo__08B54D69">
-    <End Type="ProjectHeavenModel.Customer" Role="Customer" Multiplicity="1" />
-    <End Type="ProjectHeavenModel.Order_Item" Role="Order_Item" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Customer">
-        <PropertyRef Name="Customer_ID" />
-      </Principal>
-      <Dependent Role="Order_Item">
-        <PropertyRef Name="Customer_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Order_Ite__Order__09A971A2">
-    <End Type="ProjectHeavenModel.Order" Role="Order" Multiplicity="1" />
-    <End Type="ProjectHeavenModel.Order_Item" Role="Order_Item" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Order">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Order_Item">
-        <PropertyRef Name="Order_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
 </Schema>
