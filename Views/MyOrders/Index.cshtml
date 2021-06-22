@@ -1,4 +1,4 @@
-﻿@model IEnumerable<The_New_Paradise.Models.Cart_Item>
+﻿@model IEnumerable<The_New_Paradise.Models.MyOrder>
 
 @{
     ViewBag.Title = "Index";
@@ -12,15 +12,6 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.PriceOfGivenService)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.QuanOfGivenServiceForGivenCust)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TotalPriceOfGivenServiceForGivenCust)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Customer.Customer_Name)
         </th>
         <th>
@@ -31,15 +22,6 @@
 
 @foreach (var item in Model) {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.PriceOfGivenService)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.QuanOfGivenServiceForGivenCust)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TotalPriceOfGivenServiceForGivenCust)
-        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Customer.Customer_Name)
         </td>

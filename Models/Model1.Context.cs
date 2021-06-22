@@ -29,5 +29,8 @@ namespace The_New_Paradise.Models
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<ServicesTable> ServicesTables { get; set; }
+        public virtual DbSet<Customer_Cart> Customer_Cart { get; set; }
+        public virtual DbSet<Cart_Item> Cart_Item { get; set; }
+        public virtual DbSet<MyOrder> MyOrders { get; set; }
     }
 }

@@ -52,13 +52,23 @@ namespace The_New_Paradise.Controllers
         {
             if (ModelState.IsValid)
             {
-                //ViewBag["CurrentCustomerId"] = customer.Customer_ID;
                 db.Customers.Add(customer);
-                //Customer_Cart cust_cart = new Customer_Cart(){Customer_Id=customer.Customer_ID};
-                //db.Customer_Cart.Add(cust_cart);
-                Session["cart"] = null;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                Customer_Cart c = new Customer_Cart()
+                {
+                    Customer_Id = customer.Customer_ID,
+                };
+                db.Customer_Cart.Add(c);
+                db.SaveChanges();
+                //List<Cart_Item> cr = new List<Cart_Item>();
+                //List<Cart_Item> crtitm = new List<Cart_Item>();
+                //crtitm = db.Cart_Item.Where(car => car.Cart_Id == customer.Customer_ID).ToList();
+                //foreach(Cart_Item crt in crtitm)
+                //{
+                //    cr.Add(crt);
+                //}
+                //Session["cart"] = cr;
+                return RedirectToAction("CustSignIn");
             }
 
             return View(customer);
@@ -141,9 +151,20 @@ namespace The_New_Paradise.Controllers
                     Models.Customer cust = context.Customers.Where(u => u.Customer_Email == obj.Customer_Email && u.Customer_Password == obj.Customer_Password).FirstOrDefault();
                     if (cust != null)
                     {
-                        
+                        Session["CuurrentCustId"] = cust.Customer_ID;     
                         Session["CustomerEmail"] = cust;
                         Session["AdminEmail"] = null;
+
+                        List<Cart_Item> cr = new List<Cart_Item>();
+                        
+                        List<Cart_Item> crtitm = new List<Cart_Item>();
+                        crtitm = db.Cart_Item.Where(car => car.Cart_Id == cust.Customer_ID).ToList();
+                        foreach (Cart_Item crt in crtitm)
+                        {
+                            cr.Add(crt);
+                        }
+                        Session["cart"] = cr;
+
                         return RedirectToAction("Index", "Home");
                     }
                     else

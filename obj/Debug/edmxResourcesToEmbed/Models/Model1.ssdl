@@ -11,6 +11,15 @@
     <Property Name="Admin_Email" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Admin_Password" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
+  <EntityType Name="Cart_Item">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Cart_Id" Type="int" />
+    <Property Name="Servive_Id" Type="int" />
+    <Property Name="Price" Type="float" Nullable="false" />
+  </EntityType>
   <EntityType Name="Customer">
     <Key>
       <PropertyRef Name="Customer_ID" />
@@ -23,6 +32,15 @@
     <Property Name="Customer_Email" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Customer_Password" Type="nvarchar" MaxLength="30" Nullable="false" />
   </EntityType>
+  <EntityType Name="Customer_Cart">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Customer_Id" Type="int" />
+    <Property Name="Total_Price" Type="float" Nullable="false" />
+    <Property Name="Total_Quantity" Type="int" Nullable="false" />
+  </EntityType>
   <EntityType Name="Employee">
     <Key>
       <PropertyRef Name="Employee_ID" />
@@ -33,6 +51,14 @@
     <Property Name="Employee_Email" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Employee_Salary" Type="float" Nullable="false" />
     <Property Name="Employee_Experience" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MyOrder">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Order_Id" Type="int" />
+    <Property Name="Service_Id" Type="int" />
   </EntityType>
   <EntityType Name="ServicesTable">
     <Key>
@@ -45,10 +71,93 @@
     <Property Name="Service_Description" Type="nvarchar" MaxLength="200" Nullable="false" />
     <Property Name="Service_Image" Type="varchar" MaxLength="150" />
   </EntityType>
+  <Association Name="FK__Cart_Item__Cart___2CF2ADDF">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+    <End Role="Cart_Item" Type="Self.Cart_Item" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="Customer_ID" />
+      </Principal>
+      <Dependent Role="Cart_Item">
+        <PropertyRef Name="Cart_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Cart_Item__Servi__2DE6D218">
+    <End Role="ServicesTable" Type="Self.ServicesTable" Multiplicity="0..1" />
+    <End Role="Cart_Item" Type="Self.Cart_Item" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServicesTable">
+        <PropertyRef Name="Service_ID" />
+      </Principal>
+      <Dependent Role="Cart_Item">
+        <PropertyRef Name="Servive_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Customer___Custo__25518C17">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+    <End Role="Customer_Cart" Type="Self.Customer_Cart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="Customer_ID" />
+      </Principal>
+      <Dependent Role="Customer_Cart">
+        <PropertyRef Name="Customer_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__MyOrder__Order_I__31B762FC">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+    <End Role="MyOrder" Type="Self.MyOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="Customer_ID" />
+      </Principal>
+      <Dependent Role="MyOrder">
+        <PropertyRef Name="Order_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__MyOrder__Service__32AB8735">
+    <End Role="ServicesTable" Type="Self.ServicesTable" Multiplicity="0..1" />
+    <End Role="MyOrder" Type="Self.MyOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServicesTable">
+        <PropertyRef Name="Service_ID" />
+      </Principal>
+      <Dependent Role="MyOrder">
+        <PropertyRef Name="Service_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="ProjectHeavenModelStoreContainer">
     <EntitySet Name="AdminTable" EntityType="Self.AdminTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Cart_Item" EntityType="Self.Cart_Item" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Customer_Cart" EntityType="Self.Customer_Cart" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MyOrder" EntityType="Self.MyOrder" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ServicesTable" EntityType="Self.ServicesTable" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Cart_Item__Cart___2CF2ADDF" Association="Self.FK__Cart_Item__Cart___2CF2ADDF">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="Cart_Item" EntitySet="Cart_Item" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Cart_Item__Servi__2DE6D218" Association="Self.FK__Cart_Item__Servi__2DE6D218">
+      <End Role="ServicesTable" EntitySet="ServicesTable" />
+      <End Role="Cart_Item" EntitySet="Cart_Item" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Customer___Custo__25518C17" Association="Self.FK__Customer___Custo__25518C17">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="Customer_Cart" EntitySet="Customer_Cart" />
+    </AssociationSet>
+    <AssociationSet Name="FK__MyOrder__Order_I__31B762FC" Association="Self.FK__MyOrder__Order_I__31B762FC">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="MyOrder" EntitySet="MyOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK__MyOrder__Service__32AB8735" Association="Self.FK__MyOrder__Service__32AB8735">
+      <End Role="ServicesTable" EntitySet="ServicesTable" />
+      <End Role="MyOrder" EntitySet="MyOrder" />
+    </AssociationSet>
   </EntityContainer>
 </Schema>

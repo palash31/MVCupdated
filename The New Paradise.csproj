@@ -130,9 +130,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AddToCartController.cs" />
     <Compile Include="Controllers\AdminTablesController.cs" />
+    <Compile Include="Controllers\Cart_ItemController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
+    <Compile Include="Controllers\Customer_CartController.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MyOrdersController.cs" />
     <Compile Include="Controllers\ServicesTablesController.cs" />
     <Compile Include="Filters\AuthFilter.cs" />
     <Compile Include="Filters\CustomerAuth.cs" />
@@ -142,7 +145,13 @@
     <Compile Include="Models\AdminTable.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Cart_Item.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Customer.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Customer_Cart.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Employee.cs">
@@ -162,6 +171,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MyOrder.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ServicesTable.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -295,6 +307,11 @@
     <Content Include="Views\Customers\CustSignIn.cshtml" />
     <Content Include="Views\AddToCart\MyCart.cshtml" />
     <Content Include="Views\AddToCart\OrderSuccess.cshtml" />
+    <Content Include="Views\MyOrders\Create.cshtml" />
+    <Content Include="Views\MyOrders\Delete.cshtml" />
+    <Content Include="Views\MyOrders\Details.cshtml" />
+    <Content Include="Views\MyOrders\Edit.cshtml" />
+    <Content Include="Views\MyOrders\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -12,13 +12,13 @@ namespace The_New_Paradise.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class AdminTable
+    public partial class Customer_Cart
     {
-        public int Admin_ID { get; set; }
-        public string Admin_Name { get; set; }
-        public string Admin_Phone { get; set; }
-        public string Admin_Address { get; set; }
-        public string Admin_Email { get; set; }
-        public string Admin_Password { get; set; }
+        public int Id { get; set; }
+        public Nullable<int> Customer_Id { get; set; }
+        public double Total_Price { get; set; }
+        public int Total_Quantity { get; set; }
+    
+        public virtual Customer Customer { get; set; }
     }
 }
