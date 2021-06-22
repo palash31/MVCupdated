@@ -11,14 +11,17 @@ namespace The_New_Paradise.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class AdminTable
     {
         public int Admin_ID { get; set; }
         public string Admin_Name { get; set; }
         public string Admin_Phone { get; set; }
         public string Admin_Address { get; set; }
+        [Display(Name = "User Name")]
         public string Admin_Email { get; set; }
+        [DataType(DataType.Password)]
         public string Admin_Password { get; set; }
     }
 }

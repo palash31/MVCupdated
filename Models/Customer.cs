@@ -11,7 +11,8 @@ namespace The_New_Paradise.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Customer
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -27,7 +28,9 @@ namespace The_New_Paradise.Models
         public string Customer_Gender { get; set; }
         public string Customer_Phone { get; set; }
         public string Customer_Address { get; set; }
+        [Display(Name = "User Name")]
         public string Customer_Email { get; set; }
+        [DataType(DataType.Password)]
         public string Customer_Password { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

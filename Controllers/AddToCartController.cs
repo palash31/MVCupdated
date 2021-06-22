@@ -16,16 +16,18 @@ namespace The_New_Paradise.Controllers
         {
             if(Session["cart"]==null)
             {
-                Cart_Item cartitem = new Cart_Item();
-                cartitem.Cart_Id = (int)Session["CuurrentCustId"];
-                cartitem.Servive_Id = s.Service_ID;
-                cartitem.Price = s.Service_Price;
-                db.Cart_Item.Add(cartitem);
-                db.SaveChanges();
-                Session["cart"] = cartitem;
-                //ViewBag.cart = li.Count();
-                ViewBag.cart = 1;
-                Session["count"] = 1;
+                List<Cart_Item> cartitem = new List<Cart_Item>();
+                foreach (Cart_Item ci in cartitem)
+                {
+                    ci.Cart_Id = (int)Session["CuurrentCustId"];
+                    ci.Servive_Id = s.Service_ID;
+                    ci.Price = s.Service_Price;
+                    db.Cart_Item.Add(ci);
+                    db.SaveChanges();
+                    Session["cart"] = cartitem;
+                    ViewBag.cart = 1;
+                    Session["count"] = 1;
+                }
             }
             else
             {
@@ -71,10 +73,18 @@ namespace The_New_Paradise.Controllers
         public ActionResult Remove(ServicesTable sr)
         {
             List<Cart_Item> li = (List<Cart_Item>)Session["cart"];
-            li.Remove((from a in li where a.Servive_Id == sr.Service_ID select a).First());
+            Cart_Item c = new Cart_Item();
+            c = db.Cart_Item.AsEnumerable().Where(ct => ct.Cart_Id == (int)Session["CuurrentCustId"] && ct.Servive_Id == sr.Service_ID ).FirstOrDefault();
+            li.Remove(c);
             Session["cart"] = li;
-            db.Cart_Item.Remove((from b in db.Cart_Item where b.Servive_Id == sr.Service_ID && b.Cart_Id == (int)Session["CuurrentCustId"] select b).First());
-            db.SaveChanges();
+
+            List<Cart_Item> entity2 = new List<Cart_Item>();
+            entity2 = db.Cart_Item.AsEnumerable().Where(ct4 => ct4.Cart_Id == (int)Session["CuurrentCustId"] && ct4.Servive_Id == sr.Service_ID).ToList();
+            foreach (Cart_Item crt5 in entity2)
+            {
+                db.Cart_Item.Remove(crt5);
+                db.SaveChanges();
+            }
             Session["count"] = Convert.ToInt32(Session["count"]) - 1;
             return RedirectToAction("MyCart", "AddToCart");
         }
@@ -95,6 +105,23 @@ namespace The_New_Paradise.Controllers
 
             ViewData["Customers"] = cu;
             ViewData["Services"] = ls2;
+            List<Cart_Item> lss = new List<Cart_Item>();
+            lss = db.Cart_Item.AsEnumerable().Where(c => c.Cart_Id == (int)Session["CuurrentCustId"]).ToList();
+            //lss = (from i in db.Cart_Item where i.Cart_Id == (int)Session["CuurrentCustId"] select i);
+            foreach (Cart_Item entity in lss)
+            {
+                db.Cart_Item.Remove(entity);
+                db.SaveChanges();
+            }
+            List<Cart_Item> cr2 = new List<Cart_Item>();
+
+            List<Cart_Item> crtitm2 = new List<Cart_Item>();
+            crtitm2 = db.Cart_Item.AsEnumerable().Where(car => car.Cart_Id == (int)Session["CuurrentCustId"]).ToList();
+            foreach (Cart_Item crt3 in crtitm2)
+            {
+                cr2.Add(crt3);
+            }
+            Session["cart"] = cr2;
             return View();
         }
 
