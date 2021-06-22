@@ -141,13 +141,14 @@ namespace The_New_Paradise.Controllers
                     Models.Customer cust = context.Customers.Where(u => u.Customer_Email == obj.Customer_Email && u.Customer_Password == obj.Customer_Password).FirstOrDefault();
                     if (cust != null)
                     {
-
-                        Session["CustomerEmail"] = cust.Customer_Email;
+                        
+                        Session["CustomerEmail"] = cust;
+                        
                         return RedirectToAction("Index", "Home");
                     }
                     else
                     {
-                        Session["LoggedInCustomerId"] = null;
+                        
                         ModelState.AddModelError("", "Invalid User Email or Password");
                         return View(obj);
                     }

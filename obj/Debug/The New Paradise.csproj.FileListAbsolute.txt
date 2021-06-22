@@ -412,3 +412,86 @@ C:\Users\palaa\Downloads\MyRepos-master (1)\MyRepos-master\obj\Debug\The New Par
 C:\Users\palaa\Downloads\MyRepos-master (1)\MyRepos-master\obj\Debug\The New Paradise.csproj.CopyComplete
 C:\Users\palaa\Downloads\MyRepos-master (1)\MyRepos-master\obj\Debug\The New Paradise.dll
 C:\Users\palaa\Downloads\MyRepos-master (1)\MyRepos-master\obj\Debug\The New Paradise.pdb
+D:\MVC Project\bin\The New Paradise.dll.config
+D:\MVC Project\bin\The New Paradise.dll
+D:\MVC Project\bin\The New Paradise.pdb
+D:\MVC Project\bin\roslyn\csc.exe
+D:\MVC Project\bin\roslyn\csc.exe.config
+D:\MVC Project\bin\roslyn\csc.rsp
+D:\MVC Project\bin\roslyn\csi.exe
+D:\MVC Project\bin\roslyn\csi.exe.config
+D:\MVC Project\bin\roslyn\csi.rsp
+D:\MVC Project\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\MVC Project\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\MVC Project\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\MVC Project\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\MVC Project\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\MVC Project\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\MVC Project\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\MVC Project\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\MVC Project\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+D:\MVC Project\bin\roslyn\Microsoft.Managed.Core.targets
+D:\MVC Project\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\MVC Project\bin\roslyn\Microsoft.Win32.Primitives.dll
+D:\MVC Project\bin\roslyn\System.AppContext.dll
+D:\MVC Project\bin\roslyn\System.Collections.Immutable.dll
+D:\MVC Project\bin\roslyn\System.Console.dll
+D:\MVC Project\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+D:\MVC Project\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+D:\MVC Project\bin\roslyn\System.Diagnostics.StackTrace.dll
+D:\MVC Project\bin\roslyn\System.Globalization.Calendars.dll
+D:\MVC Project\bin\roslyn\System.IO.Compression.dll
+D:\MVC Project\bin\roslyn\System.IO.Compression.ZipFile.dll
+D:\MVC Project\bin\roslyn\System.IO.FileSystem.dll
+D:\MVC Project\bin\roslyn\System.IO.FileSystem.Primitives.dll
+D:\MVC Project\bin\roslyn\System.Net.Http.dll
+D:\MVC Project\bin\roslyn\System.Net.Sockets.dll
+D:\MVC Project\bin\roslyn\System.Reflection.Metadata.dll
+D:\MVC Project\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+D:\MVC Project\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+D:\MVC Project\bin\roslyn\System.Security.Cryptography.Encoding.dll
+D:\MVC Project\bin\roslyn\System.Security.Cryptography.Primitives.dll
+D:\MVC Project\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+D:\MVC Project\bin\roslyn\System.Text.Encoding.CodePages.dll
+D:\MVC Project\bin\roslyn\System.Threading.Tasks.Extensions.dll
+D:\MVC Project\bin\roslyn\System.ValueTuple.dll
+D:\MVC Project\bin\roslyn\System.Xml.ReaderWriter.dll
+D:\MVC Project\bin\roslyn\System.Xml.XmlDocument.dll
+D:\MVC Project\bin\roslyn\System.Xml.XPath.dll
+D:\MVC Project\bin\roslyn\System.Xml.XPath.XDocument.dll
+D:\MVC Project\bin\roslyn\vbc.exe
+D:\MVC Project\bin\roslyn\vbc.exe.config
+D:\MVC Project\bin\roslyn\vbc.rsp
+D:\MVC Project\bin\roslyn\VBCSCompiler.exe
+D:\MVC Project\bin\roslyn\VBCSCompiler.exe.config
+D:\MVC Project\bin\Antlr3.Runtime.dll
+D:\MVC Project\bin\EntityFramework.dll
+D:\MVC Project\bin\EntityFramework.SqlServer.dll
+D:\MVC Project\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\MVC Project\bin\Microsoft.Web.Infrastructure.dll
+D:\MVC Project\bin\Newtonsoft.Json.dll
+D:\MVC Project\bin\System.Web.Helpers.dll
+D:\MVC Project\bin\System.Web.Mvc.dll
+D:\MVC Project\bin\System.Web.Optimization.dll
+D:\MVC Project\bin\System.Web.Razor.dll
+D:\MVC Project\bin\System.Web.WebPages.Deployment.dll
+D:\MVC Project\bin\System.Web.WebPages.dll
+D:\MVC Project\bin\System.Web.WebPages.Razor.dll
+D:\MVC Project\bin\WebGrease.dll
+D:\MVC Project\bin\EntityFramework.xml
+D:\MVC Project\bin\EntityFramework.SqlServer.xml
+D:\MVC Project\bin\System.Web.Helpers.xml
+D:\MVC Project\bin\System.Web.Mvc.xml
+D:\MVC Project\bin\System.Web.Optimization.xml
+D:\MVC Project\bin\System.Web.Razor.xml
+D:\MVC Project\bin\System.Web.WebPages.xml
+D:\MVC Project\bin\System.Web.WebPages.Deployment.xml
+D:\MVC Project\bin\System.Web.WebPages.Razor.xml
+D:\MVC Project\bin\Newtonsoft.Json.xml
+D:\MVC Project\bin\Antlr3.Runtime.pdb
+D:\MVC Project\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\MVC Project\obj\Debug\The New Paradise.csprojAssemblyReference.cache
+D:\MVC Project\obj\Debug\The New Paradise.csproj.CoreCompileInputs.cache
+D:\MVC Project\obj\Debug\The New Paradise.csproj.CopyComplete
+D:\MVC Project\obj\Debug\The New Paradise.dll
+D:\MVC Project\obj\Debug\The New Paradise.pdb

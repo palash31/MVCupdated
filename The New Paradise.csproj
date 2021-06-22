@@ -303,7 +303,6 @@
     <Content Include="Views\Customers\CustSignIn.cshtml" />
     <Content Include="Views\AddToCart\MyCart.cshtml" />
     <Content Include="Views\AddToCart\OrderSuccess.cshtml" />
-    <Content Include="Views\AddToCart\Add.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

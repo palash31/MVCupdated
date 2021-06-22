@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using The_New_Paradise.Models;
 
 namespace The_New_Paradise.Controllers
 {
@@ -10,6 +11,8 @@ namespace The_New_Paradise.Controllers
     {
         public ActionResult Index()
         {
+            Customer C = new Customer();
+            C = (Customer)Session["CustomerEmail"];
             return View();
         }
 

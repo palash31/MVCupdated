@@ -10,6 +10,7 @@ namespace The_New_Paradise.Controllers
     public class AddToCartController : Controller
     {
         // GET: AddToCart
+        [Filters.CustomerAuthFilter]
         public ActionResult Add(ServicesTable s)
         {
             if(Session["cart"]==null)
@@ -29,6 +30,7 @@ namespace The_New_Paradise.Controllers
                 ViewBag.cart = li.Count();
                 Session["count"] = Convert.ToInt32(Session["count"]) + 1;
             }
+            
             return RedirectToAction("Index", "ServicesTables");
         }
         [Filters.CustomerAuthFilter]
@@ -56,6 +58,8 @@ namespace The_New_Paradise.Controllers
         }
         public ActionResult OrderSuccess()
         {
+            Customer cu = (Customer)Session["CustomerEmail"];
+            ViewData.Model = cu;
             return View();
         }
 

@@ -19,6 +19,7 @@ namespace The_New_Paradise.Controllers
        
         public ActionResult Index()
         {
+          
             return View(db.ServicesTables.ToList());
         }
 
