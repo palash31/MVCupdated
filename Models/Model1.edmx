@@ -1,0 +1,360 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ProjectHeavenModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AdminTable">
+          <Key>
+            <PropertyRef Name="Admin_ID" />
+          </Key>
+          <Property Name="Admin_ID" Type="int" Nullable="false" />
+          <Property Name="Admin_Name" Type="nvarchar" MaxLength="70" Nullable="false" />
+          <Property Name="Admin_Phone" Type="nvarchar" MaxLength="10" />
+          <Property Name="Admin_Address" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Admin_Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Admin_Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cart_Item">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cart_Id" Type="int" />
+          <Property Name="Service_Id" Type="int" />
+          <Property Name="PriceOfGivenService" Type="int" Nullable="false" />
+          <Property Name="QuanOfGivenServiceForGivenCust" Type="int" Nullable="false" />
+          <Property Name="TotalPriceOfGivenServiceForGivenCust" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="Customer_ID" />
+          </Key>
+          <Property Name="Customer_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Customer_Name" Type="nvarchar" MaxLength="70" Nullable="false" />
+          <Property Name="Customer_Gender" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Customer_Phone" Type="nvarchar" MaxLength="10" />
+          <Property Name="Customer_Address" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Customer_Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Customer_Password" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Customer_Cart">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Customer_Id" Type="int" />
+          <Property Name="Total_Price" Type="float" Nullable="false" />
+          <Property Name="Total_Quantity" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Employee_ID" />
+          </Key>
+          <Property Name="Employee_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Employee_Name" Type="nvarchar" MaxLength="70" Nullable="false" />
+          <Property Name="Employee_Phone" Type="nvarchar" MaxLength="10" />
+          <Property Name="Employee_Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Employee_Salary" Type="float" Nullable="false" />
+          <Property Name="Employee_Experience" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ServicesTable">
+          <Key>
+            <PropertyRef Name="Service_ID" />
+          </Key>
+          <Property Name="Service_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Service_Namee" Type="nvarchar" MaxLength="70" Nullable="false" />
+          <Property Name="Service_Price" Type="float" Nullable="false" />
+          <Property Name="Service_Time" Type="int" Nullable="false" />
+          <Property Name="Service_Description" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Service_Image" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <Association Name="FK__Cart_Item__Cart___2180FB33">
+          <End Role="Customer_Cart" Type="Self.Customer_Cart" Multiplicity="0..1" />
+          <End Role="Cart_Item" Type="Self.Cart_Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer_Cart">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cart_Item">
+              <PropertyRef Name="Cart_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cart_Item__Servi__22751F6C">
+          <End Role="ServicesTable" Type="Self.ServicesTable" Multiplicity="0..1" />
+          <End Role="Cart_Item" Type="Self.Cart_Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServicesTable">
+              <PropertyRef Name="Service_ID" />
+            </Principal>
+            <Dependent Role="Cart_Item">
+              <PropertyRef Name="Service_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Customer___Custo__1CBC4616">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="Customer_Cart" Type="Self.Customer_Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Customer_ID" />
+            </Principal>
+            <Dependent Role="Customer_Cart">
+              <PropertyRef Name="Customer_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ProjectHeavenModelStoreContainer">
+          <EntitySet Name="AdminTable" EntityType="Self.AdminTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cart_Item" EntityType="Self.Cart_Item" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer_Cart" EntityType="Self.Customer_Cart" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ServicesTable" EntityType="Self.ServicesTable" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Cart_Item__Cart___2180FB33" Association="Self.FK__Cart_Item__Cart___2180FB33">
+            <End Role="Customer_Cart" EntitySet="Customer_Cart" />
+            <End Role="Cart_Item" EntitySet="Cart_Item" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cart_Item__Servi__22751F6C" Association="Self.FK__Cart_Item__Servi__22751F6C">
+            <End Role="ServicesTable" EntitySet="ServicesTable" />
+            <End Role="Cart_Item" EntitySet="Cart_Item" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Customer___Custo__1CBC4616" Association="Self.FK__Customer___Custo__1CBC4616">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Customer_Cart" EntitySet="Customer_Cart" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ProjectHeavenModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AdminTable">
+          <Key>
+            <PropertyRef Name="Admin_ID" />
+          </Key>
+          <Property Name="Admin_ID" Type="Int32" Nullable="false" />
+          <Property Name="Admin_Name" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Admin_Phone" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Admin_Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Admin_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Admin_Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="Customer_ID" />
+          </Key>
+          <Property Name="Customer_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Customer_Name" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Customer_Gender" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Customer_Phone" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Customer_Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Customer_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Customer_Password" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Customer_Cart" Relationship="ProjectHeavenModel.FK__Customer___Custo__1CBC4616" FromRole="Customer" ToRole="Customer_Cart" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Employee_ID" />
+          </Key>
+          <Property Name="Employee_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Employee_Name" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Employee_Phone" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Employee_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Employee_Salary" Type="Double" Nullable="false" />
+          <Property Name="Employee_Experience" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ServicesTable">
+          <Key>
+            <PropertyRef Name="Service_ID" />
+          </Key>
+          <Property Name="Service_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Service_Namee" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Service_Price" Type="Double" Nullable="false" />
+          <Property Name="Service_Time" Type="Int32" Nullable="false" />
+          <Property Name="Service_Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Service_Image" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Cart_Item" Relationship="ProjectHeavenModel.FK__Cart_Item__Servi__22751F6C" FromRole="ServicesTable" ToRole="Cart_Item" />
+        </EntityType>
+        <EntityContainer Name="ProjectHeavenEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AdminTables" EntityType="Self.AdminTable" />
+          <EntitySet Name="Customers" EntityType="Self.Customer" />
+          <EntitySet Name="Employees" EntityType="Self.Employee" />
+          <EntitySet Name="ServicesTables" EntityType="Self.ServicesTable" />
+          <EntitySet Name="Customer_Cart" EntityType="ProjectHeavenModel.Customer_Cart" />
+          <AssociationSet Name="FK__Customer___Custo__1CBC4616" Association="ProjectHeavenModel.FK__Customer___Custo__1CBC4616">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Customer_Cart" EntitySet="Customer_Cart" />
+          </AssociationSet>
+          <EntitySet Name="Cart_Item" EntityType="ProjectHeavenModel.Cart_Item" />
+          <AssociationSet Name="FK__Cart_Item__Cart___2180FB33" Association="ProjectHeavenModel.FK__Cart_Item__Cart___2180FB33">
+            <End Role="Customer_Cart" EntitySet="Customer_Cart" />
+            <End Role="Cart_Item" EntitySet="Cart_Item" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cart_Item__Servi__22751F6C" Association="ProjectHeavenModel.FK__Cart_Item__Servi__22751F6C">
+            <End Role="ServicesTable" EntitySet="ServicesTables" />
+            <End Role="Cart_Item" EntitySet="Cart_Item" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="Customer_Cart">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Customer_Id" Type="Int32" />
+          <Property Name="Total_Price" Type="Double" Nullable="false" />
+          <Property Name="Total_Quantity" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="ProjectHeavenModel.FK__Customer___Custo__1CBC4616" FromRole="Customer_Cart" ToRole="Customer" />
+          <NavigationProperty Name="Cart_Item" Relationship="ProjectHeavenModel.FK__Cart_Item__Cart___2180FB33" FromRole="Customer_Cart" ToRole="Cart_Item" />
+        </EntityType>
+        <Association Name="FK__Customer___Custo__1CBC4616">
+          <End Type="ProjectHeavenModel.Customer" Role="Customer" Multiplicity="0..1" />
+          <End Type="ProjectHeavenModel.Customer_Cart" Role="Customer_Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Customer_ID" />
+            </Principal>
+            <Dependent Role="Customer_Cart">
+              <PropertyRef Name="Customer_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Cart_Item">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cart_Id" Type="Int32" />
+          <Property Name="Service_Id" Type="Int32" />
+          <Property Name="PriceOfGivenService" Type="Int32" Nullable="false" />
+          <Property Name="QuanOfGivenServiceForGivenCust" Type="Int32" Nullable="false" />
+          <Property Name="TotalPriceOfGivenServiceForGivenCust" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Customer_Cart" Relationship="ProjectHeavenModel.FK__Cart_Item__Cart___2180FB33" FromRole="Cart_Item" ToRole="Customer_Cart" />
+          <NavigationProperty Name="ServicesTable" Relationship="ProjectHeavenModel.FK__Cart_Item__Servi__22751F6C" FromRole="Cart_Item" ToRole="ServicesTable" />
+        </EntityType>
+        <Association Name="FK__Cart_Item__Cart___2180FB33">
+          <End Type="ProjectHeavenModel.Customer_Cart" Role="Customer_Cart" Multiplicity="0..1" />
+          <End Type="ProjectHeavenModel.Cart_Item" Role="Cart_Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer_Cart">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cart_Item">
+              <PropertyRef Name="Cart_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cart_Item__Servi__22751F6C">
+          <End Type="ProjectHeavenModel.ServicesTable" Role="ServicesTable" Multiplicity="0..1" />
+          <End Type="ProjectHeavenModel.Cart_Item" Role="Cart_Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServicesTable">
+              <PropertyRef Name="Service_ID" />
+            </Principal>
+            <Dependent Role="Cart_Item">
+              <PropertyRef Name="Service_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ProjectHeavenModelStoreContainer" CdmEntityContainer="ProjectHeavenEntities2">
+          <EntitySetMapping Name="AdminTables">
+            <EntityTypeMapping TypeName="ProjectHeavenModel.AdminTable">
+              <MappingFragment StoreEntitySet="AdminTable">
+                <ScalarProperty Name="Admin_ID" ColumnName="Admin_ID" />
+                <ScalarProperty Name="Admin_Name" ColumnName="Admin_Name" />
+                <ScalarProperty Name="Admin_Phone" ColumnName="Admin_Phone" />
+                <ScalarProperty Name="Admin_Address" ColumnName="Admin_Address" />
+                <ScalarProperty Name="Admin_Email" ColumnName="Admin_Email" />
+                <ScalarProperty Name="Admin_Password" ColumnName="Admin_Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="ProjectHeavenModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="Customer_ID" ColumnName="Customer_ID" />
+                <ScalarProperty Name="Customer_Name" ColumnName="Customer_Name" />
+                <ScalarProperty Name="Customer_Gender" ColumnName="Customer_Gender" />
+                <ScalarProperty Name="Customer_Phone" ColumnName="Customer_Phone" />
+                <ScalarProperty Name="Customer_Address" ColumnName="Customer_Address" />
+                <ScalarProperty Name="Customer_Email" ColumnName="Customer_Email" />
+                <ScalarProperty Name="Customer_Password" ColumnName="Customer_Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="ProjectHeavenModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="Employee_ID" ColumnName="Employee_ID" />
+                <ScalarProperty Name="Employee_Name" ColumnName="Employee_Name" />
+                <ScalarProperty Name="Employee_Phone" ColumnName="Employee_Phone" />
+                <ScalarProperty Name="Employee_Email" ColumnName="Employee_Email" />
+                <ScalarProperty Name="Employee_Salary" ColumnName="Employee_Salary" />
+                <ScalarProperty Name="Employee_Experience" ColumnName="Employee_Experience" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServicesTables">
+            <EntityTypeMapping TypeName="ProjectHeavenModel.ServicesTable">
+              <MappingFragment StoreEntitySet="ServicesTable">
+                <ScalarProperty Name="Service_Image" ColumnName="Service_Image" />
+                <ScalarProperty Name="Service_ID" ColumnName="Service_ID" />
+                <ScalarProperty Name="Service_Namee" ColumnName="Service_Namee" />
+                <ScalarProperty Name="Service_Price" ColumnName="Service_Price" />
+                <ScalarProperty Name="Service_Time" ColumnName="Service_Time" />
+                <ScalarProperty Name="Service_Description" ColumnName="Service_Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customer_Cart">
+            <EntityTypeMapping TypeName="ProjectHeavenModel.Customer_Cart">
+              <MappingFragment StoreEntitySet="Customer_Cart">
+                <ScalarProperty Name="Total_Quantity" ColumnName="Total_Quantity" />
+                <ScalarProperty Name="Total_Price" ColumnName="Total_Price" />
+                <ScalarProperty Name="Customer_Id" ColumnName="Customer_Id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cart_Item">
+            <EntityTypeMapping TypeName="ProjectHeavenModel.Cart_Item">
+              <MappingFragment StoreEntitySet="Cart_Item">
+                <ScalarProperty Name="TotalPriceOfGivenServiceForGivenCust" ColumnName="TotalPriceOfGivenServiceForGivenCust" />
+                <ScalarProperty Name="QuanOfGivenServiceForGivenCust" ColumnName="QuanOfGivenServiceForGivenCust" />
+                <ScalarProperty Name="PriceOfGivenService" ColumnName="PriceOfGivenService" />
+                <ScalarProperty Name="Service_Id" ColumnName="Service_Id" />
+                <ScalarProperty Name="Cart_Id" ColumnName="Cart_Id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

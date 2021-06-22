@@ -1,0 +1,58 @@
+﻿@model The_New_Paradise.Models.Cart_Item
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Cart_Item</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PriceOfGivenService)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PriceOfGivenService)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QuanOfGivenServiceForGivenCust)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QuanOfGivenServiceForGivenCust)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalPriceOfGivenServiceForGivenCust)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalPriceOfGivenServiceForGivenCust)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer_Cart.Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer_Cart.Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ServicesTable.Service_Namee)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ServicesTable.Service_Namee)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

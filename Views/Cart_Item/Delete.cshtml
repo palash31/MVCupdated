@@ -1,0 +1,64 @@
+﻿@model The_New_Paradise.Models.Cart_Item
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Cart_Item</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PriceOfGivenService)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PriceOfGivenService)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QuanOfGivenServiceForGivenCust)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QuanOfGivenServiceForGivenCust)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalPriceOfGivenServiceForGivenCust)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalPriceOfGivenServiceForGivenCust)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer_Cart.Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer_Cart.Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ServicesTable.Service_Namee)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ServicesTable.Service_Namee)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,52 @@
+﻿@model IEnumerable<The_New_Paradise.Models.ServicesTable>
+
+@{ ViewBag.Title = "Index"; }
+
+<script>
+    function Alertt() {
+        alert("Item added to cart");
+    }
+</script>
+
+<div style="width:100%;height:180px;background-color:white;vertical-align:middle;">
+    <img src="~/Upload/Logo.png" style="width:200px;height:200px;margin-left:200px;" />
+    <div style="display:inline;">
+        <h2 style="font-weight:bold;display:inline;font-size:xx-large;padding-left:50px;color:blue;">Explore Heaven on Earth</h2><br />
+
+    </div>
+</div>
+<div style="width:100%;background-color:sandybrown;margin-top:20px;">
+
+    @foreach (var item in Model)
+    {
+<div class="card d-block w-100" style="width: 300px;height:max-content;margin-right:50px;margin-left:25px;margin-top:20px; background-color:black;text-align:left;color:gold; font-family:Calibri;display:inline-block;">
+    <img src="@Url.Content("~/Upload/" + item.Service_Image)" style="height:200px; width:300px;" class="card-img-top" alt="...">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-6" style="margin-top: 15px;margin-left:5px;">
+                <b>Name:</b>
+                @Html.DisplayFor(modelItem => item.Service_Namee)<br />
+                <b>Price:</b>
+                @Html.DisplayFor(modelItem => item.Service_Price) <p style="display:inline-block">INR</p> <br />
+                <b>Duration:</b>
+                @Html.DisplayFor(modelItem => item.Service_Time) <p style="display:inline-block">minutes</p>
+            </div>
+            <div class="col-md-1" style="margin-top:25px;">
+                <a href="@Url.Action("Add", "AddToCart", item)" onclick="Alertt()" class="btn btn-primary">Add to Cart</a>
+            </div>
+        </div>
+        <hr class="dropdown-divider">
+        <div style="margin-left:18px;margin-right:15px;margin-top:10px;color:gainsboro;height:max-content">
+            @Html.DisplayFor(modelItem => item.Service_Description)<br /><br />
+        </div>
+        <p class="card-text"></p>
+    </div>
+</div>
+    }
+</div>
+<div>
+
+    <button>@Html.ActionLink("Create New", "Create")</button>
+    <button>@Html.ActionLink("Edit", "Edit", "ServicesTables")</button>
+    <button>@Html.ActionLink("Delete", "Delete", "ServicesTables")</button>
+</div>
