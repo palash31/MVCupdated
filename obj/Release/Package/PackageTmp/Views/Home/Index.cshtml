@@ -14,21 +14,28 @@
 {
     <h2 style="text-align: center; color: navajowhite; margin-top: 50px">Welcome to</h2>
     <h1 style="text-align:center; color:navajowhite; font-family:'Arial Rounded MT'; margin-top: 20px;">THE NEW PARADISE</h1>
+    <h4 style="text-align:center; color:cadetblue;margin-top:50px;">Click here to <a href="@Url.Action("CustSignIn","Customers")" class="btn btn-primary">Sign In</a> <a href="@Url.Action("CustSignOut","Customers")" class="btn btn-primary">Sign Out</a></h4>
+    <h4 style="text-align:center; color:cadetblue;margin-top:30px;">New to us ? <a href="@Url.Action("Create","Customers")" class="btn btn-primary">Register</a></h4>
+    <h4 style="text-align:center; color:cadetblue;margin-top:30px;">For admin <a href="@Url.Action("SignIn","AdminTables")" class="btn btn-primary">Sign In</a> <a href="@Url.Action("SignOut","AdminTables")" class="btn btn-primary">Sign Out</a></h4>
+
 }
 
 @if (custo != null)
 {
     <h3 style="text-align: center; color:lawngreen; margin-top: 50px">Welcome</h3>
     <h1 style="text-align:center; color:salmon; font-family:'Arial Rounded MT'; margin-top: 20px;">@custo.Customer_Name</h1>
+    <br />
+    <h4 style="text-align:center; color:cadetblue;margin-top:50px;">Click here to <a href="@Url.Action("CustSignOut","Customers")" class="btn btn-primary">Sign Out</a></h4>
 }
 @if (admi != null)
 {
     <h3 style="text-align: center; color:lawngreen; margin-top: 50px">Welcome</h3>
     <h1 style="text-align:center; color:salmon; font-family:'Arial Rounded MT'; margin-top: 20px;">@admi.Admin_Name</h1>
+    <br />
+    <br />
+    <h4 style="text-align:center; color:cadetblue;margin-top:30px;">Click here to <a href="@Url.Action("SignOut","AdminTables")" class="btn btn-primary">Sign Out</a></h4>
+
 }
 
-<h4 style="text-align:center; color:cadetblue;margin-top:50px;">Click here to <a href="@Url.Action("CustSignIn","Customers")" class="btn btn-primary">Sign In</a> <a href="@Url.Action("CustSignOut","Customers")" class="btn btn-primary">Sign Out</a></h4>
-<h4 style="text-align:center; color:cadetblue;margin-top:30px;">New to us ? <a href="@Url.Action("Create","Customers")" class="btn btn-primary">Register</a></h4>
-<h4 style="text-align:center; color:cadetblue;margin-top:30px;">For admin <a href="@Url.Action("SignIn","AdminTables")" class="btn btn-primary">Sign In</a> <a href="@Url.Action("SignOut","AdminTables")" class="btn btn-primary">Sign Out</a></h4>
 
 

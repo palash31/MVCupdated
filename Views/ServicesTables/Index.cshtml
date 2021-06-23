@@ -46,9 +46,12 @@
 </div>
     }
 </div>
-<div>
 
+@if (Session["AdminEmail"] != null)
+{
+<div>
     <button>@Html.ActionLink("Create New", "Create")</button>
     <button>@Html.ActionLink("Edit", "Edit", "ServicesTables")</button>
     <button>@Html.ActionLink("Delete", "Delete", "ServicesTables")</button>
 </div>
+}
