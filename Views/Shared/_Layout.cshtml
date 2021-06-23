@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using The_New_Paradise.Models
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -7,7 +8,14 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
-
+@{
+    Customer C = (Customer)Session["CustomerEmail"];
+    AdminTable adm = (AdminTable)Session["AdminEmail"];
+    ViewData["Cust"] = C;
+    ViewData["Adm"] = adm;
+    Customer custo = ViewData["Cust"] as Customer;
+    AdminTable admi = ViewData["Adm"] as AdminTable;
+}
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top" style="background-color:bisque;">
         <div class="container">
@@ -29,6 +37,13 @@
                     {
                         <li style="float:right">@Html.ActionLink("My Cart", "MyCart", "AddToCart")</li>
                         <li style="float:right">@Html.ActionLink("My Orders", "Index", "MyOrders")</li>
+                       
+                    }
+                    @if (Session["AdminEmail"] != null)
+                    {
+                        <li style="float:right">@Html.ActionLink("My Cart", "MyCart", "AddToCart")</li>
+                        <li style="float:right">@Html.ActionLink("My Orders", "Index", "MyOrders")</li>
+                     
                     }
 
 
