@@ -56,6 +56,7 @@ namespace The_New_Paradise.Controllers
                 foreach(Cart_Item w in list)
                 {
                     ServicesTable t = new ServicesTable();
+                    t.Service_ID = (from sn in db.ServicesTables where sn.Service_ID == w.Servive_Id select sn.Service_ID).FirstOrDefault();
                     t.Service_Namee = (from sn in db.ServicesTables where sn.Service_ID == w.Servive_Id select sn.Service_Namee).FirstOrDefault();
                     t.Service_Price = (from sn in db.ServicesTables where sn.Service_ID == w.Servive_Id select sn.Service_Price).FirstOrDefault(); ;
                     t.Service_Image = (from sn in db.ServicesTables where sn.Service_ID == w.Servive_Id select sn.Service_Image).FirstOrDefault(); ;
@@ -73,18 +74,18 @@ namespace The_New_Paradise.Controllers
         public ActionResult Remove(ServicesTable sr)
         {
             List<Cart_Item> li = (List<Cart_Item>)Session["cart"];
-            Cart_Item c = new Cart_Item();
-            c = db.Cart_Item.AsEnumerable().Where(ct => ct.Cart_Id == (int)Session["CuurrentCustId"] && ct.Servive_Id == sr.Service_ID ).FirstOrDefault();
-            li.Remove(c);
+            int c;
+            c = db.Cart_Item.AsEnumerable().Where(ct => ct.Cart_Id == (int)Session["CuurrentCustId"] && ct.Servive_Id == sr.Service_ID).Select(ct => ct.Id).FirstOrDefault();
+            Cart_Item cpm = li.First(x => x.Id == c);
+            li.Remove(cpm);
             Session["cart"] = li;
 
-            List<Cart_Item> entity2 = new List<Cart_Item>();
-            entity2 = db.Cart_Item.AsEnumerable().Where(ct4 => ct4.Cart_Id == (int)Session["CuurrentCustId"] && ct4.Servive_Id == sr.Service_ID).ToList();
-            foreach (Cart_Item crt5 in entity2)
-            {
-                db.Cart_Item.Remove(crt5);
-                db.SaveChanges();
-            }
+            int entity2;
+            entity2 = db.Cart_Item.AsEnumerable().Where(ct4 => ct4.Cart_Id == (int)Session["CuurrentCustId"] && ct4.Servive_Id == sr.Service_ID).Select(ct4 => ct4.Id).FirstOrDefault();
+            Cart_Item cpm2 = db.Cart_Item.First(x => x.Id == entity2);
+            db.Cart_Item.Remove(cpm2);
+            db.SaveChanges();
+            
             Session["count"] = Convert.ToInt32(Session["count"]) - 1;
             return RedirectToAction("MyCart", "AddToCart");
         }
