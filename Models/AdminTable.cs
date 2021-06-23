@@ -16,8 +16,11 @@ namespace The_New_Paradise.Models
     public partial class AdminTable
     {
         public int Admin_ID { get; set; }
+        [Display(Name = "Name")]
         public string Admin_Name { get; set; }
+        [Display(Name = "Mobile Number")]
         public string Admin_Phone { get; set; }
+        [Display(Name = "Address")]
         public string Admin_Address { get; set; }
         [Display(Name = "User Name")]
         public string Admin_Email { get; set; }

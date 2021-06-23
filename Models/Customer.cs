@@ -24,9 +24,13 @@ namespace The_New_Paradise.Models
         }
     
         public int Customer_ID { get; set; }
+        [Display(Name = "Name")]
         public string Customer_Name { get; set; }
+        [Display(Name = "Gender")]
         public string Customer_Gender { get; set; }
+        [Display(Name = "Mobile Number")]
         public string Customer_Phone { get; set; }
+        [Display(Name = "Address")]
         public string Customer_Address { get; set; }
         [Display(Name = "User Name")]
         public string Customer_Email { get; set; }

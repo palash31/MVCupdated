@@ -11,14 +11,20 @@ namespace The_New_Paradise.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Employee
     {
         public int Employee_ID { get; set; }
+        [Display(Name = "Styler")]
         public string Employee_Name { get; set; }
+        [Display(Name = "Contact Number")]
         public string Employee_Phone { get; set; }
+        [Display(Name = "Email")]
         public string Employee_Email { get; set; }
+        [Display(Name = "Salary")]
         public double Employee_Salary { get; set; }
+        [Display(Name = "Working from(in years)")]
         public int Employee_Experience { get; set; }
     }
 }
