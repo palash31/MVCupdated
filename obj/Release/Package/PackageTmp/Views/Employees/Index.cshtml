@@ -1,14 +1,26 @@
 ﻿@model IEnumerable<The_New_Paradise.Models.Employee>
-
+<br />
+<br />
 @{
     ViewBag.Title = "Index";
 }
 
+@if (Session["AdminEmail"] != null)
+{
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+}
+<br />
+<br />
+
 <div class="bg-warning">
+    <br />
+    <br />
+    <br />
+    <br />
+
     <table class="table  table-bordered table-striped">
         <tr>
             <th>
@@ -20,13 +32,19 @@
             <th>
                 @Html.DisplayNameFor(model => model.Employee_Email)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Employee_Salary)
-            </th>
+            @if (Session["AdminEmail"] != null)
+            {
+                <th>
+                    @Html.DisplayNameFor(model => model.Employee_Salary)
+                </th>
+            }
             <th>
                 @Html.DisplayNameFor(model => model.Employee_Experience)
             </th>
+            @if (Session["AdminEmail"] != null)
+            {
             <th></th>
+            }
         </tr>
 
         @foreach (var item in Model)
@@ -41,17 +59,25 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Employee_Email)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Employee_Salary)
-                </td>
+
+                @if (Session["AdminEmail"] != null)
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Employee_Salary)
+                    </td>
+                }
+
                 <td>
                     @Html.DisplayFor(modelItem => item.Employee_Experience)
                 </td>
+                @if (Session["AdminEmail"] != null)
+                {
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.Employee_ID }) |
                     @Html.ActionLink("Details", "Details", new { id = item.Employee_ID }) |
                     @Html.ActionLink("Delete", "Delete", new { id = item.Employee_ID })
                 </td>
+                }
             </tr>
         }
 
